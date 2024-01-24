@@ -33,8 +33,8 @@ jobs:
       - name: Build
         run: dotnet build --no-restore src/github-actions-webapp/github-actions-webapp.csproj
       - name: Stop github-actions-webapp
-        run: appcmd stop sites "github-actions-webapp"
+        run: C:\\Windows\\System32\\inetsrv\\appcmd stop sites "github-actions-webapp"
       - name: Publish Release
-        run: dotnet publish github-actions-webapp --configuration Release -o C:\inetpub\wwwroot\github-actions-webapp
+        run: dotnet publish src/github-actions-webapp/github-actions-webapp.csproj --configuration Release -o C:\inetpub\wwwroot\github-actions-webapp
       - name: Start github-actions-webapp
-        run: appcmd start sites "github-actions-webapp"
+        run: C:\\Windows\\System32\\inetsrv\\appcmd start sites "github-actions-webapp"
