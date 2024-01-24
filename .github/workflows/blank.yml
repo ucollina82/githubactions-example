@@ -28,6 +28,8 @@ jobs:
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v3
+      - name: move to project folder
+        run: cd src/github-actions-webapp
       - name: Restore dependencies
         run: dotnet restore
       - name: Build
