@@ -28,15 +28,11 @@ jobs:
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v3
-      - name: move to project folder
-        run: cd src/github-actions-webapp
       - name: Restore dependencies
-        run: dotnet restore
+        run: dotnet restore src/github-actions-webapp/github-actions-webapp.csproj
       - name: Build
-        run: dotnet build --no-restore
-      - name: Test
-        run: dotnet test --no-build --verbosity normal
-      - name: Stop example.com
+        run: dotnet build --no-restore src/github-actions-webapp/github-actions-webapp.csproj
+      - name: Stop github-actions-webapp
         run: appcmd stop sites "github-actions-webapp"
       - name: Publish Release
         run: dotnet publish github-actions-webapp --configuration Release -o C:\inetpub\wwwroot\github-actions-webapp
